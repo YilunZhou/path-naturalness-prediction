@@ -19,7 +19,9 @@ This is a Python pickle file, which can be used in Python as
 # a path is a dictionary, with keys being 'forward' and 'reverse', representing the two directions
 >>> forward = path['forward']
 >>> reverse = path['reverse']
-# forward and reverse are both dictionaries and have the same structure. They have two fields, 'short' and 'text'. Short is a diagrammatic representation of the path. Text is a natural language representation of the path. Both are strings
+# forward and reverse are both dictionaries and have the same structure. 
+# They have two fields, 'short' and 'text'. Short is a diagrammatic representation of the path. 
+# Text is a natural language representation of the path. Both are strings. 
 >>> f_text = forward['text']
 >>> f_short = forward['short']
 >>> r_text = reverse['text']
