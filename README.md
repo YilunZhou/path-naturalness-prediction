@@ -39,7 +39,7 @@ This is a text file, with each line being a pairwise comparison. Each line is in
 
 For `open-domain`, paths of different lengths are in separate pickle files (the length of path is the number of vertices on the path), but file format is the same. In addition, the path ID in `answers.txt` are also appended with the length, since the original path IDs are not guaranteed to be unique across different lengths. 
 
-###Code
+### Code
 Two models are trained. The first one trains on the `science` dataset, which is used to test on both the `science` dataset and the `money` dataset. The second one trains on the `open-domain` dataset, which is tested on the `open-domain` dataset and is used for the ablation study and downstream applications. 
 
 ##### `science`
