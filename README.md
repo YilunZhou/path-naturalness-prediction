@@ -40,7 +40,12 @@ This is a text file, with each line being a pairwise comparison. Each line is in
 For `open-domain`, paths of different lengths are in separate pickle files (the length of path is the number of vertices on the path), but file format is the same. In addition, the path ID in `answers.txt` are also appended with the length, since the original path IDs are not guaranteed to be unique across different lengths. 
 
 ### Code
-Two models are trained. The first one trains on the `science` dataset, which is used to test on both the `science` dataset and the `money` dataset. The second one trains on the `open-domain` dataset, which is tested on the `open-domain` dataset and is used for the ablation study and downstream applications. 
+Two models are trained. The first one trains on the `science` dataset, which is used to test on both the `science` dataset and the `money` dataset. The second one trains on the `open-domain` dataset, which is tested on the `open-domain` dataset and is used for the ablation study and downstream applications. Python 2 is used throughout. While the code was developed with PyTorch 0.4.1, the current version of Pytorch 1.0 should also work. 
 
 ##### `science`
-The code for training this model is in `code/science`. Features for this model have been pre-computed. However, some feature files are larger than the GitHub 100MB file limit. Thus, all feature files have been compressed and splitted into smaller chunks stored in `code/split_feature_chunks` folder. *Before the first time of training, execute `RUN_ME_FIRST.sh` in the `code` directory.* This will populate the `code/features` folder with the correct files. Re-training the model does not require re-running the script. 
+The code for training this model is in `code/science`. Features for this model have been pre-computed. However, some feature files are larger than the GitHub 100MB file limit. Thus, all feature files have been compressed and splitted into smaller chunks stored in `code/split_feature_chunks` folder. *Before the first time of training, execute `RUN_ME_FIRST.sh` in the `code/science` directory.* This will populate the `code/features` folder with the correct files. Re-training the model does not require re-running the script. 
+
+To train the model, simply run `python learn.py` in the `code/science` directory. The validation accuracy will be logged in `train.log` file, and model checkpoints will be saved at `cpkt` folder. Hyperparameters including the features used and the feature length (which is the same as path code length in Table 3 of the paper) can be changed in the call to `train()` function at the end of the file. A list of feature names can be found in `dataset.py`. 
+
+##### `open-domain`
+The code for training this model is in `code/open-domain`. 
