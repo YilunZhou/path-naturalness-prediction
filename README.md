@@ -38,3 +38,9 @@ This is a Python pickle file, which can be used in Python as
 This is a text file, with each line being a pairwise comparison. Each line is in the form of `A_B_C`, where (`A`, `B`) is the pair provided to the participant, and `C` is the one chosen to be more natural (`C` is either `A` or `B`). The format of `A`, `B`, and `C` is the numeric ID followed by `f` or `r` which indicates the path direction. For example, `34672r` represents the path `Hand <--RelatedTo--> Part <--RelatedTo--> Paper <--DistinctFrom--> Card ` in the above example. 
 
 For `open-domain`, paths of different lengths are in separate pickle files (the length of path is the number of vertices on the path), but file format is the same. In addition, the path ID in `answers.txt` are also appended with the length, since the original path IDs are not guaranteed to be unique across different lengths. 
+
+###Code
+Two models are trained. The first one trains on the `science` dataset, which is used to test on both the `science` dataset and the `money` dataset. The second one trains on the `open-domain` dataset, which is tested on the `open-domain` dataset and is used for the ablation study and downstream applications. 
+
+##### `science`
+The code for training this model is in `code/science`. Features for this model have been pre-computed. However, some feature files are larger than the GitHub 100MB file limit. Thus, all feature files have been compressed and splitted into smaller chunks stored in `code/split_feature_chunks` folder. *Before the first time of training, execute `RUN_ME_FIRST.sh` in the `code` directory.* This will populate the `code/features` folder with the correct files. Re-training the model does not require re-running the script. 
